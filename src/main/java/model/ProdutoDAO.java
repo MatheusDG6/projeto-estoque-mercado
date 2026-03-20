@@ -37,10 +37,10 @@ public class ProdutoDAO {
             e.printStackTrace();
         }
     }
-    // read - select
+    
     public List<ProdutoBean> ler () {
             List<ProdutoBean> produtos = new ArrayList();
-            
+            // read - select
             try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -63,5 +63,23 @@ public class ProdutoDAO {
             e.printStackTrace();
         }
         return produtos;
+    }
+    public void deletarProduto(int id) {
+        // delete
+        try {
+            Connection conn = Conexao.conectar();
+            PreparedStatement stmt = null;
+            
+            stmt = conn.prepareStatement(
+               "DELETE FROM produtos WHERE id_produto = ?");
+            
+            stmt.setInt(1, id);
+            
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

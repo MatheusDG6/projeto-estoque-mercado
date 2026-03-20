@@ -5,6 +5,8 @@
 package view;
 // Tela inicio para listar os produtos cadastrados
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,12 +21,22 @@ import model.UsuarioDAO;
  */
 public class Inicio extends javax.swing.JFrame {
     DefaultTableModel model;
+    int id_linha_selecionada = 0;
 
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
+        tabelaProdutos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int linha = tabelaProdutos.getSelectedRow();
+                
+                if (linha != -1) {
+                    id_linha_selecionada = 
+                        (int) tabelaProdutos.getValueAt(linha, column:0);
+            }
         PreencherTabela();
     }
     
@@ -116,6 +128,11 @@ public class Inicio extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setText("Remover");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         nomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +231,13 @@ public class Inicio extends javax.swing.JFrame {
     private void nomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeProdutoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        // botao remover
+        ProdutoDAO dao = new ProdutoDAO();
+        dao.deletarProduto(id_linha_selecionada);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
