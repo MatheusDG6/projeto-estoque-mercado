@@ -17,8 +17,27 @@ import java.util.List;
  *
  * @author mathe
  */
-// insert
+
 public class ProdutoDAO {
+    public void cadastrarProduto(ProdutoBean produto) {
+        
+        // create - insert
+        try {
+            Connection conn = Conexao.conectar();
+            PreparedStatement stmt = null;
+            
+            stmt = conn.prepareStatement("INSERT INTO produtos (nome, preco, quantidade) VALUES (?, ?, ?)");
+            stmt.setString(1, produto.getNome()); 
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setDouble(3, produto.getQuantidade());
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    // read - select
     public List<ProdutoBean> ler () {
             List<ProdutoBean> produtos = new ArrayList();
             
