@@ -15,19 +15,27 @@ import javax.swing.JOptionPane;
  */
 
 public class Conexao {
+    private static Connection conn = null;
+    
     private static final String url = "jdbc:mysql://localhost:3306/gerenciador";
     private static final String user = "root";
     private static final String senha = "bd@_77gg2";
     
-    public static Connection conectar () {
-        Connection conn = null;
+    private Conexao() {
+    }
+    
+    public static synchronized Connection conectar() {
         try {
-            conn = DriverManager.getConnection(url, user, senha);
-        } catch (SQLException e) {
+            if (conn == null || conn.isClosed()) {
+                conn = DriverManager.getConnection(url, user, senha);
+            }
+        } catch( SQLException e) {
             e.printStackTrace();
         }
         return conn;
+        
     }
+    
     // método testarConexao
     public void testarConexao() {
         Connection conn = conectar();
