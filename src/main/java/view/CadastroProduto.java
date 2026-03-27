@@ -143,6 +143,7 @@ public class CadastroProduto extends javax.swing.JFrame {
            nomeProduto.setText("");
            precoProduto.setText("");
            quantidadeProduto.setText("");
+           this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
