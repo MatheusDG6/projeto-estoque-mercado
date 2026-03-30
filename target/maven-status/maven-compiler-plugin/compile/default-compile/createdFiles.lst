@@ -6,7 +6,6 @@ view\Inicio.class
 conexao\Conexao.class
 view\Login$4.class
 model\UsuarioDAO.class
-view\Cadastro$5.class
 view\Inicio$5.class
 view\TelaAlteracoes$1.class
 view\Inicio$1.class
@@ -22,7 +21,7 @@ view\TelaAlteracoes.class
 model\ProdutoDAO.class
 view\Inicio$4.class
 view\TelaAlteracoes$2.class
-view\Login$5.class
+view\Inicio$6.class
 view\Cadastro$1.class
 view\Cadastro$4.class
 view\Cadastro.class

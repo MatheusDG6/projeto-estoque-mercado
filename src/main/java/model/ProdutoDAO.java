@@ -64,8 +64,27 @@ public class ProdutoDAO {
         }
         return produtos;
     }
+    
+    public void atualizarProduto(ProdutoBean produto) {
+        // update
+        try {
+            Connection conn = Conexao.conectar();
+            PreparedStatement stmt = null;
+            
+            stmt = conn.preparedStatement(
+                    "UPDATE produtos SET nome = ?, preco = ?, quantidade = ? WHERE id_produto = ?");
+            stmt.setString(1, produto.getNome());
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setInt(3, produto.getQuantidade());
+            stmt.setInt(4, produto.getId_produto());
+            
+            stmt.executeUpdate();
+            stmt.close(); conn.close();
+        } catch (SQLException e) {e.printStackTrace(); }
+    }
+   
     public void deletarProduto(int id) {
-        // delete
+        // delete 
         try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
