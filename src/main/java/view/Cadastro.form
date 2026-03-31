@@ -173,9 +173,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="senha">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>

@@ -69,8 +69,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        senha.setText("jPasswordField1");
-
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("Senha:");
 

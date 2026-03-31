@@ -65,8 +65,6 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Senha:");
 
-        senha.setText("jPasswordField1");
-
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,6 +194,7 @@ public class Cadastro extends javax.swing.JFrame {
             nome.setText("");
             user.setText("");
             senha.setText("");
+            this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

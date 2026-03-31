@@ -20,8 +20,7 @@ import java.util.List;
 
 public class ProdutoDAO {
     public void cadastrarProduto(ProdutoBean produto) {
-        
-        // create - insert
+        // create
         try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -38,9 +37,9 @@ public class ProdutoDAO {
         }
     }
     
-    public List<ProdutoBean> ler () {
+    public List<ProdutoBean> lerProduto() {
             List<ProdutoBean> produtos = new ArrayList();
-            // read - select
+            // read
             try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -71,12 +70,12 @@ public class ProdutoDAO {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
             
-            stmt = conn.preparedStatement(
+            stmt = conn.prepareStatement(
                     "UPDATE produtos SET nome = ?, preco = ?, quantidade = ? WHERE id_produto = ?");
             stmt.setString(1, produto.getNome());
             stmt.setDouble(2, produto.getPreco());
             stmt.setInt(3, produto.getQuantidade());
-            stmt.setInt(4, produto.getId_produto());
+            stmt.setInt(4, produto.getId());
             
             stmt.executeUpdate();
             stmt.close(); conn.close();
