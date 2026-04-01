@@ -42,6 +42,8 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela de Cadastro de Produtos");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
 
@@ -138,11 +140,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    // botão cadastrar produto
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        // cadastrarProduto
+
         String nome = nomeProduto.getText();
         String preco = precoProduto.getText();
         String quantidade = quantidadeProduto.getText();
@@ -167,6 +169,10 @@ public class CadastroProduto extends javax.swing.JFrame {
            nomeProduto.setText("");
            precoProduto.setText("");
            quantidadeProduto.setText("");
+           
+           Inicio telaInicio = new Inicio();
+           telaInicio.setVisible(true);
+       
            this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -1,6 +1,7 @@
 view\Inicio$2.class
 view\Cadastro$3.class
 model\UsuarioBean.class
+view\TelaAlteracoes$3.class
 view\Login$2.class
 view\Inicio.class
 conexao\Conexao.class
@@ -21,6 +22,8 @@ view\TelaAlteracoes.class
 model\ProdutoDAO.class
 view\Inicio$4.class
 view\TelaAlteracoes$2.class
+view\Inicio$6.class
+view\Login$5.class
 view\Cadastro$1.class
 view\Cadastro$4.class
 view\Cadastro.class
