@@ -5,6 +5,7 @@
 package view;
 
 import java.lang.reflect.Member;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ProdutoBean;
 import model.ProdutoDAO;
@@ -18,14 +19,23 @@ public class TelaAlteracoes extends javax.swing.JFrame {
     private final ProdutoDAO conexao;
     private ProdutoBean produtobean;
     private ProdutoBean produto;
+    //private Inicio telaInicio;
     
     /**
      * Creates new form TelaAlteracoes
-     */
+     */     // , Inicio telaInicio
     public TelaAlteracoes(ProdutoBean produto) {
         this.produtobean = produto;
         this.conexao = new ProdutoDAO();
         initComponents();
+        
+        // alterando construtor para o alterar
+        //this.produto = produto;
+        //this.telaInicio = telaInicio;
+        
+        //nomeProduto.setText(produto.getNome());
+        //precoProduto.setText(String.valueOf(produto.getPreco()));
+        //quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         // pegando valores dos campos para deletar
         this.produto = produto;
         
@@ -34,24 +44,7 @@ public class TelaAlteracoes extends javax.swing.JFrame {
         quantidadeProduto.setText(String.valueOf(produto.getQuantidade()));
         loadMemberData();
     }
-    // método pra recarregar a tabela pós alteração
-    /*
-    public void carregarTabela() {
-        DefaultTableModel model = (DefaultTableModel) tableProduto.getModel();
-        model.setRowCount(0);
-        
-        ProdutoDAO dao = new ProdutoDAO();
-
-        for (ProdutoBean produto : dao.lerProduto()) {
-            model.addRow(new Object[]{
-                produto.getId(),
-                produto.getNome(),
-                produto.getPreco(),
-                produto.getQuantidade()
-            });
-        }
-    }
-    */
+    
     private void loadMemberData(){
         nomeProduto.setText(produtobean.getNome());
         precoProduto.setText(String.valueOf(produtobean.getPreco()));
@@ -201,22 +194,36 @@ public class TelaAlteracoes extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    // botao deletar
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        // botao deletar
-        
+
         ProdutoDAO dao = new ProdutoDAO();
         dao.deletarProduto(produto.getId());
         
+        JOptionPane.showMessageDialog(null, "Produto " + nomeProduto.getText() + " Deletado com sucesso!");
+        
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    // botao alterar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        // botao alterar
-        //produto.setStatus("Modificação Concluída");
-        //dao.atualizarProduto(produto);
+
+        // pega os valores dos campos
+        String nome = nomeProduto.getText();
+        double preco = Double.parseDouble(precoProduto.getText());
+        int quantidade = Integer.parseInt(quantidadeProduto.getText());
+        
+        // atualiza o objeto
+        produto.setNome(nome);
+        produto.setPreco(preco);
+        produto.setQuantidade(quantidade);
+        
+        // chama o DAO
+        ProdutoDAO dao = new ProdutoDAO();
+        dao.atualizarProduto(produto);
+        
+        JOptionPane.showMessageDialog(null, "Produto " + nomeProduto.getText() + " Alterado com sucesso!");
+        
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
