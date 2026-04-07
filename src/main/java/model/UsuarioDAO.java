@@ -18,11 +18,13 @@ public class UsuarioDAO {
     
     // regex uma regra de validação de texto
     public static boolean validarEmail(String email) {
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         return email != null && email.matches(regex);
     }
     
     public void cadastrar(UsuarioBean usuario) {
+        
+        
         try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;

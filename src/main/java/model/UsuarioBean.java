@@ -14,8 +14,13 @@ public class UsuarioBean {
     private String usuario;
     private String senha;
     private boolean admin;
+    private String email;
 
     public UsuarioBean() {
+    }
+    
+    public String getEmail() {
+        return email;
     }
 
     public UsuarioBean(int id, String nome, String usuario, String senha, boolean admin) {
@@ -64,5 +69,9 @@ public class UsuarioBean {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

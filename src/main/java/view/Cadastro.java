@@ -161,6 +161,17 @@ public class Cadastro extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Botao Cadastrar
+        
+        // chamando método para validarEmail
+        
+        String email = user.getText().trim();
+            
+        if (!validarEmail(email)) {
+            JOptionPane.showMessageDialog(null, "Email inválido! Tente novamente");
+            user.requestFocus();
+            return;
+            }
+        
         if ((user.getText().isEmpty()) || (nome.getText().isEmpty()) ||
             (senha.getText().isEmpty())) {
             JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
@@ -175,18 +186,10 @@ public class Cadastro extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Usuário "+ user.getText()+" inserido com sucesso! ");  
             }
+        
             nome.setText("");
             user.setText("");
             senha.setText("");
-            
-            // chamando método para validarEmail
-            String email = user.getText();
-            
-            if (!validarEmail(email)) {
-                JOptionPane.showMessageDialog(null, "Email inválido!");
-                user.requestFocus();
-                return;
-            }
             
             Login telaLogin = new Login();
             
